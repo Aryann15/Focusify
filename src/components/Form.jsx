@@ -4,7 +4,7 @@ import "./Form.css";
 import * as $ from 'jquery';
 
 
-const Form = () => {
+const Form = ({setTimeLeft,setIsPaused}) => {
   const {
     register,
     handleSubmit,
@@ -14,6 +14,9 @@ const Form = () => {
 const onSubmit = data =>{
 console.log(data.minutes)
 $('#focusify-form').trigger("reset");
+setTimeLeft(data.minutes*60)
+setIsPaused(false)
+
 }
   return (<>
     <div className="center">
