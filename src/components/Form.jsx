@@ -1,6 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import "./Form.css";
+import * as $ from 'jquery';
+
 
 const Form = () => {
   const {
@@ -9,12 +11,16 @@ const Form = () => {
     formState: { errors },
   } = useForm();
 
-  
-  return (
+const onSubmit = data =>{
+console.log(data.minutes)
+$('#focusify-form').trigger("reset");
+}
+  return (<>
     <div className="center">
       <p>Minutes:</p>
-      <form noValidate>
+      <form noValidate onSubmit={handleSubmit(onSubmit)} id="focusify-form">
         <input
+        id="minutes-input"
           type="number"
           {...register("minutes", {
             required: {
@@ -25,18 +31,21 @@ const Form = () => {
             min: {
               value: 0.001,
               message:
-                "You really wanna concentrate less than a milliesecond, COME ON!",
+                "You really wanna concentrate less than a milliesecond, COME ON! min limit: 0.001",
             },
             max: {
               value: 180,
-              message: "Whoa! slow down there zuck, try taking breaks!",
+              message: "Whoa! slow down there zuck, try taking breaks!, max limit: 180 minutes",
             },
           })}
         />
         <input type="submit" />
       </form>
-      {errors.minutes && <p>{errors.minutes.message}</p>}
+      
     </div>
+    <div className="messages">{errors.minutes && <p>{errors.minutes.message}</p>}
+    </div>
+    </>
   );
 };
 
