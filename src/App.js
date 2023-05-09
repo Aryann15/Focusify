@@ -7,9 +7,13 @@ import Finished from "./components/Finished";
 function App() {
 
   const[timeLeft , setTimeLeft] = useState (true);
+  
   return (
     <>
     <Form />
+    {
+      timeLeft ? <Timer /> : <Finished />
+    }
     </>
   );
 }
