@@ -1,0 +1,23 @@
+.container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  /* margin-top: 20px; */
+}
+h1 {
+  font-size: 40px;
+}
+
+.butt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container .semi h1{
+    font-size: 80px;
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    margin-bottom: 140px;
+  }
